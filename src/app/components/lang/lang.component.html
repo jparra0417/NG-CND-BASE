@@ -1,0 +1,16 @@
+<div class="cnd-content">
+    <div class="cnd-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="cnd-input">
+                    <select (change)="onChangeSelect($event.target.value)">
+                        <ng-container *ngFor="let language of listLang">
+                            <option [value]="language" [selected]="lang === language">{{'lang.'+language | lang}}</option>
+                        </ng-container>
+                    </select>
+                    <label class="label" for="email">{{'lang.selectLang' | lang:lang}}</label>
+                </div>
+            </div>                       
+        </div>
+    </div>
+</div>

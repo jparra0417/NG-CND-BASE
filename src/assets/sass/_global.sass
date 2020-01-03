@@ -1,0 +1,147 @@
+body
+    font-size: $font-size
+.cnd-background
+    background: $gray-medium
+    height: 100%
+    padding: 0
+    margin: 0
+    display: -webkit-box
+    display: -moz-box
+    display: -ms-flexbox
+    display: -webkit-flex
+    display: flex
+    align-items: center
+    justify-content: center
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+
+    .cnd-container
+        background: $gray-light
+        padding-top: 15px
+        padding-bottom: 15px
+        border-radius: .5rem
+        overflow: hidden
+// tabs
+.cnd-tab
+    margin: 0.5rem 0 20px
+    padding: 0
+    display: flex
+    flex-wrap: wrap
+    list-style: none
+    border-bottom: 1px solid $gray-medium
+    li
+        a
+            color: $gray-medium
+            display: block
+            padding: 0.5rem 0.5rem
+            text-align: center
+            border: 1px solid transparent
+            border-top-left-radius: 0.25rem
+            border-top-right-radius: 0.25rem
+            margin-bottom: -1px
+            font-weight: 500
+            cursor: pointer
+            &.active
+                border-color: $gray-medium $gray-medium $gray-light
+                color: $gray-dark
+
+.cnd-tab-content
+    padding: .5rem .5rem 1rem
+// cnd input
+.cnd-input
+    // margin: .5rem 0 0
+    position: relative
+    padding-bottom: 25px
+    position: relative
+    // padding-bottom: .5rem
+    .ng-invalid
+            &.ng-touched
+                border-color: $red !important    
+    input,
+    textarea,
+    select
+        padding: .4rem
+        width: 100%
+        display: block
+        margin: 0
+        outline: none
+        border: 1px solid $gray-medium
+        box-shadow: none transparent inset !important
+        background-color: transparent !important
+        border-radius: .2rem
+
+        &:focus
+            border-color: $gray-dark
+
+        &:placeholder-shown ~ label
+            top: 0.7rem
+            font-size: 1rem
+            left: .3rem
+            line-height: 1rem
+            cursor: text
+            opacity: 0
+            background: none
+
+    label
+        color: $gray-medium
+        opacity: 1
+        margin: 0
+        position: absolute
+        top: -.4rem
+        left: .3rem
+        font-size: 0.8rem
+        line-height: 0.8rem
+        transition: 0.4s
+        background: $gray-light
+        padding: 0 .2rem
+    .cnd-error
+        position: absolute
+        bottom: 8px
+        left: 0
+        right: 0
+        text-overflow: ellipsis
+        font-size: 0.8rem
+        color: $red        
+        overflow: hidden
+        white-space: nowrap
+        font-weight: 450
+
+// cnd-button
+.cnd-button
+    diplay: inline-block
+    padding: 0.3rem 0.5rem
+    color: $white
+    background: $gray-dark
+    opacity: 0.7
+    margin: 0
+    cursor: pointer
+    border: 0
+    border-radius: 0.3rem
+    transition: 0.3s
+    &:hover
+        opacity: 1
+
+.cnd-link
+    diplay: inline-block
+    padding: 0
+    padding: 0.3rem 0
+    border: 0
+    background: none
+    color: $gray-dark
+    box-shadow: none transparent inset !important
+    vertical-align: middle
+    cursor: pointer
+    opacity: 0.7
+    &:hover
+        text-decoration: underline
+        opacity: 1
+
+.cnd-group-button
+    overflow: hidden
+    .cnd-link
+        float: left
+    .cnd-button
+        float: right

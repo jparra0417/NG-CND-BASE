@@ -1,0 +1,26 @@
+.cnd-message
+    background: $gray-medium
+    padding: .5rem 15px
+    color: $white
+    margin-top: 15px
+    margin-right: -15px
+    margin-left: -15px
+    margin-bottom: -15px    
+    font-size: 0.8rem
+    overflow: hidden
+    
+    &.error
+        background: $red
+    &.info
+        background: $blue
+    &.success
+        background: $green
+    &.warning
+        background: $orange
+    
+    .cnd-button-message
+        float: right
+        font-weight: 500
+        cursor: pointer
+        &:hover
+            text-decoration: underline

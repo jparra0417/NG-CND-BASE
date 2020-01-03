@@ -1,0 +1,41 @@
+<form [formGroup]="formSignin" (ngSubmit)="signin()">
+    <div class="cnd-content">
+        <div class="cnd-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="cnd-input">
+                        <input type="email" id="email" placeholder="{{'person.email' | lang:lang}} *" name="email"
+                            formControlName="email" />
+                        <label class="label" for="email">{{'person.email' | lang:lang}} *</label>
+                        <div class="cnd-error">
+                            <span *ngIf="hasError(formSignin.controls['email'],'required')">
+                                {{'person.errorEmailEmpty' | lang}}
+                            </span>
+                            <span *ngIf="hasError(formSignin.controls['email'],'email')">
+                                {{'person.errorEmailEmail' | lang}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="cnd-input">
+                        <input type="password" id="password" placeholder="{{'account.password' | lang:lang}} *"
+                            name="password" formControlName="password" />
+                        <label class="label" for="password">{{'account.password' | lang:lang}} *</label>
+                        <div class="cnd-error">
+                            <span *ngIf="hasError(formSignin.controls['password'],'required')">
+                                {{'account.errorPasswordEmpty' | lang}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="cnd-group-button">
+                        <button type="button" class="cnd-link">{{'signin.forgottenPassword' | lang:lang}}</button>
+                        <button type="submit" class="cnd-button">{{'signin.title' | lang:lang}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

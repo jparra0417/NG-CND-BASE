@@ -1,0 +1,6 @@
+<ng-container *ngIf="show">
+    <div class="cnd-message {{message ? message.type : ''}}">
+        {{message.message | lang}}
+        <a class="cnd-button-message" (click)="close()">x</a>
+    </div>
+</ng-container>
