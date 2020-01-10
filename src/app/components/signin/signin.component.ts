@@ -4,6 +4,7 @@ import { BaseService } from 'src/app/services/base.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AccountService } from 'src/app/services/account.service';
 import { Account } from 'src/app/models/account';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'cnd-signin',
@@ -12,8 +13,8 @@ import { Account } from 'src/app/models/account';
 export class SigninComponent extends BaseComponent implements OnInit {
 
   formSignin: FormGroup = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(100)]),
+    password: new FormControl('', [Validators.required, Validators.maxLength(100)]),
   })
 
   constructor(protected baseService: BaseService, private accountService: AccountService) {
@@ -27,12 +28,16 @@ export class SigninComponent extends BaseComponent implements OnInit {
   signin() {
     if (this.isValidForm(this.formSignin)) {
       const account: Account = this.fillObject(this.formSignin);
-      this.accountService.login(account).subscribe((result: any) => {
-        if (result)
+      this.accountService.signin(account).subscribe((result: any) => {
+        if (result) {
           this.accountService.setToken(result.jwt);
-      }, error => {
-        console.log("Error", error);
-        
+          this.baseService.getMessageService().success('signin.success');
+        }
+      }, (error: HttpErrorResponse) => {
+        if (error.status == 401)
+          if (error.error)
+            this.baseService.getMessageService().warning(error.error);           
+
       })
     }
   }

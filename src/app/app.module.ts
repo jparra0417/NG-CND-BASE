@@ -16,6 +16,7 @@ import { P403Component } from './components/p403/p403.component';
 import { P404Component } from './components/p404/p404.component';
 import { MessageComponent } from './components/message/message.component';
 import { SpinerComponent } from './components/spiner/spiner.component';
+import { PasswordComponent } from './components/password/password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import { SpinerComponent } from './components/spiner/spiner.component';
     P403Component,
     P404Component,
     MessageComponent,
-    SpinerComponent
+    SpinerComponent,
+    PasswordComponent
   ],
   imports: [
     BrowserModule,

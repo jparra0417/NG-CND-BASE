@@ -1,34 +1,61 @@
-<div class="cnd-content">
-    <div class="cnd-body">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="cnd-input">
-                    <input type="text" id="firstName" name="firstName"
-                        placeholder="{{'person.firstName' | lang:lang}} *" />
-                    <label class="label" for="firstName">{{'person.firstName' | lang:lang}} *</label>
-
+<form [formGroup]="formSignup" (ngSubmit)="signup()" autocomplete="off">
+    <div class="cnd-content">
+        <div class="cnd-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="cnd-input">
+                        <input type="text" id="firstName" name="firstName"
+                            placeholder="{{'person.firstName' | lang:lang}} *" formControlName="firstName" />
+                        <label class="label" for="firstName">{{'person.firstName' | lang:lang}} *</label>
+                        <div class="cnd-error">
+                            <div *ngIf="hasError(formSignup.controls['firstName'],'required')">
+                                {{'person.errorFirstNameEmpty' | lang}}
+                            </div>
+                            <div *ngIf="hasError(formSignup.controls['firstName'],'maxlength')">
+                                {{'person.errorFirstNameLength' | lang}}
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-12">
-                <div class="cnd-input">
-                    <input type="text" id="lastName" name="lastName"
-                        placeholder="{{'person.lastName' | lang:lang}} *" />
-                    <label class="label" for="lastName">{{'person.lastName' | lang:lang}} *</label>
-
+                <div class="col-md-12">
+                    <div class="cnd-input">
+                        <input type="text" id="lastName" name="lastName"
+                            placeholder="{{'person.lastName' | lang:lang}} *" formControlName="lastName" />
+                        <label class="label" for="lastName">{{'person.lastName' | lang:lang}} *</label>
+                        <div class="cnd-error">
+                            <div *ngIf="hasError(formSignup.controls['lastName'],'required')">
+                                {{'person.errorLastNameEmpty' | lang}}
+                            </div>
+                            <div *ngIf="hasError(formSignup.controls['lastName'],'maxlength')">
+                                {{'person.errorLastNameLength' | lang}}
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-12">
-                <div class="cnd-input">
-                    <input type="email" id="email" name="email" placeholder="{{'person.email' | lang:lang}} *" />
-                    <label class="label" for="email">{{'person.email' | lang:lang}} *</label>
-
+                <div class="col-md-12">
+                    <div class="cnd-input">
+                        <input type="email" id="email" name="email" placeholder="{{'person.email' | lang:lang}} *"
+                            formControlName="email" />
+                        <label class="label" for="email">{{'person.email' | lang:lang}} *</label>
+                        <div class="cnd-error">
+                            <div *ngIf="hasError(formSignup.controls['email'],'required')">
+                                {{'person.errorEmailEmpty' | lang}}
+                            </div>
+                            <div *ngIf="hasError(formSignup.controls['email'],'email')">
+                                {{'person.errorEmailEmail' | lang}}
+                            </div>
+                            <div *ngIf="hasError(formSignup.controls['email'],'maxlength')">
+                                {{'person.errorEmailLength' | lang}}
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-12">
-                <div class="cnd-group-button">
-                    <button type="button" class="cnd-button">{{'signup.title' | lang:lang}}</button>
+                <div class="col-md-12">
+                    <div class="cnd-group-button">
+                        <button type="submit" class="cnd-button">{{'signup.title' | lang:lang}}</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </div>    
+</form>

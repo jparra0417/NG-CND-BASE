@@ -1,11 +1,14 @@
 <ul class="cnd-tab">
     <li>
         <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-            {{ isAuthenticated ? 'home.title' : 'signin.title' | lang:lang}}
+            {{ getTextHome() | lang:lang}}
         </a>
     </li>
     <ng-container *ngIf="!isAuthenticated">
         <li><a routerLinkActive="active" routerLink="/signup">{{'signup.title' | lang:lang}}</a></li>
     </ng-container>
     <li><a routerLinkActive="active" routerLink="/lang">{{'lang.title' | lang:lang}}</a></li>
+    <ng-container *ngIf="isAuthenticated">
+        <li><a href="Javascript:;" (click)="signout()">{{'menu.signout' | lang:lang}}</a></li>
+    </ng-container>
 </ul>

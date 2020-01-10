@@ -1,6 +1,6 @@
 .cnd-message
     background: $gray-medium
-    padding: .5rem 15px
+    padding: .5rem 20px .5rem 15px
     color: $white
     margin-top: 15px
     margin-right: -15px
@@ -8,6 +8,7 @@
     margin-bottom: -15px    
     font-size: 0.8rem
     overflow: hidden
+    position: relative        
     
     &.error
         background: $red
@@ -19,7 +20,9 @@
         background: $orange
     
     .cnd-button-message
-        float: right
+        position: absolute
+        top: 6px
+        right: 10px        
         font-weight: 500
         cursor: pointer
         &:hover

@@ -8,12 +8,15 @@
                             formControlName="email" />
                         <label class="label" for="email">{{'person.email' | lang:lang}} *</label>
                         <div class="cnd-error">
-                            <span *ngIf="hasError(formSignin.controls['email'],'required')">
+                            <div *ngIf="hasError(formSignin.controls['email'],'required')">
                                 {{'person.errorEmailEmpty' | lang}}
-                            </span>
-                            <span *ngIf="hasError(formSignin.controls['email'],'email')">
+                            </div>
+                            <div *ngIf="hasError(formSignin.controls['email'],'email')">
                                 {{'person.errorEmailEmail' | lang}}
-                            </span>
+                            </div>
+                            <div *ngIf="hasError(formSignin.controls['email'],'maxlength')">
+                                {{'person.errorEmailLength' | lang}}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -23,9 +26,12 @@
                             name="password" formControlName="password" />
                         <label class="label" for="password">{{'account.password' | lang:lang}} *</label>
                         <div class="cnd-error">
-                            <span *ngIf="hasError(formSignin.controls['password'],'required')">
+                            <div *ngIf="hasError(formSignin.controls['password'],'required')">
                                 {{'account.errorPasswordEmpty' | lang}}
-                            </span>
+                            </div>
+                            <div *ngIf="hasError(formSignin.controls['password'],'maxlength')">
+                                {{'account.errorPasswordLength' | lang}}
+                            </div>
                         </div>
                     </div>
                 </div>
