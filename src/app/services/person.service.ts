@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Person } from '../models/person';
-import environment from '/workspace/cnd/env/json-cnd-base.json';
+import environment from '/workspace/cnd/env/ENV-CND-BASE/json-cnd-base.json';
 import { BaseService } from './base.service';
 import { HttpUtil } from '../utils/http-util';
 

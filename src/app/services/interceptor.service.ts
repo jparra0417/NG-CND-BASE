@@ -31,7 +31,7 @@ export class InterceptorService implements HttpInterceptor {
         if (event instanceof HttpResponse) {
           this.spinerService.stop();
           //api call success
-          console.log('success in calling API : ', event);
+          // console.log('success in calling API : ', event);
         }
       },
       error => {

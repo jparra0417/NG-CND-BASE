@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Account } from '../models/account';
-import environment from '/workspace/cnd/env/json-cnd-base.json';
+import environment from '/workspace/cnd/env/ENV-CND-BASE/json-cnd-base.json';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { BaseService } from './base.service';
 import { HttpUtil } from '../utils/http-util';
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({
@@ -16,6 +15,8 @@ export class AccountService {
   private subjectLogged = new BehaviorSubject<boolean>(this.hasToken());
 
   public static LOCAL_STORAGE_KEY_JWT = "cnd_jwt";
+  public static KEY_NAME = "name";
+  public static KEY_ID = "sub";
 
 
   constructor(private http: HttpClient) { }
@@ -29,6 +30,32 @@ export class AccountService {
     if (this.getToken())
       return true;
     return false;
+  }
+
+  /** get authenticated name  */
+  getAuthenticatedName() : string {
+    const jwtObject = this.getJwtOject();
+    return !jwtObject ? "" : jwtObject[AccountService.KEY_NAME];    
+  }
+
+   /** get authenticated id  */
+   getAuthenticatedId() : string {
+    const jwtObject = this.getJwtOject();
+    return !jwtObject ? "" : jwtObject[AccountService.KEY_ID];    
+  }
+
+  /** get jwt object */
+  private getJwtOject(): any {
+    const token = this.getToken();
+    if (token) {
+      var base64Url = token.split('.')[1];
+      var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+      return JSON.parse(jsonPayload);
+    }
+    return null;
   }
 
   /**
@@ -52,7 +79,13 @@ export class AccountService {
   }
 
   /** save the password by token */
-  savePasswordByToken(password: string, hash: string, token: string) {
-    return this.http.post(environment.backend.base + '/account/savePasswordByToken?_h=' + hash, { password: password, token: token }, HttpUtil.httpOptionsJson);
+  savePasswordByToken(account: Account, hash: string) {
+    return this.http.post(environment.backend.base + '/account/savePasswordByToken?_h=' + hash, account, HttpUtil.httpOptionsJson);
+  }
+
+  /** save the password by token */
+  resetPassword(account: Account) {
+    return this.http.post(environment.backend.base + '/account/resetPassword', account, HttpUtil.httpOptionsJson);
   }
 }
+

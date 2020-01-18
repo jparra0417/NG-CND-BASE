@@ -9,27 +9,17 @@ export abstract class BaseComponent {
   listLang: string[];
   /** it contains the object keys to be used for iterate by the keys of an object */
   objectKeys = Object.keys;
-  /** It contains the lang */
-  lang: string;
   /** it contains if the user is logged */
-  isAuthenticated : boolean;
+  isAuthenticated: boolean;
 
   constructor(protected baseService: BaseService) {
     // set listLang
     this.listLang = this.baseService.getLangService().getListLang();
 
-    // set lang
-    this.baseService.getLangService().onChangeLang().subscribe(result => {
-      if (result)
-        this.lang = result;
-    });
-
     // set isLogged
-    this.baseService.getAccountService().isAuthenticated().subscribe((result:boolean )=> {
+    this.baseService.getAccountService().isAuthenticated().subscribe((result: boolean) => {
       this.isAuthenticated = result;
-    })
-    
-
+    });
   }
 
   /**
@@ -165,5 +155,15 @@ export abstract class BaseComponent {
   /** This methods returns a boolean if the control has a specific error */
   hasError(formControl: FormControl, error: string) {
     return FormUtil.hasError(formControl, error);
+  }
+
+  /** get the authenticated name */
+  getAuthenticatedName(): string {
+    return this.baseService.getAccountService().getAuthenticatedName();
+  }
+
+  /** get the authenticated id */
+  getAuthenticatedId(): string {
+    return this.baseService.getAccountService().getAuthenticatedId();
   }
 }

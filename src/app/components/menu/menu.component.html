@@ -1,14 +1,14 @@
-<ul class="cnd-tab">
+<ul class="cnd-tab cnd-menu">
     <li>
         <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-            {{ getTextHome() | lang:lang}}
+            {{ getTextHome() | lang}}
         </a>
     </li>
     <ng-container *ngIf="!isAuthenticated">
-        <li><a routerLinkActive="active" routerLink="/signup">{{'signup.title' | lang:lang}}</a></li>
+        <li><a routerLinkActive="active" routerLink="/signup">{{'signup.title' | lang}}</a></li>
     </ng-container>
-    <li><a routerLinkActive="active" routerLink="/lang">{{'lang.title' | lang:lang}}</a></li>
+    <li><a routerLinkActive="active" routerLink="/lang">{{'lang.title' | lang}}</a></li>
     <ng-container *ngIf="isAuthenticated">
-        <li><a href="Javascript:;" (click)="signout()">{{'menu.signout' | lang:lang}}</a></li>
+        <li><a href="Javascript:;" (click)="signout()">{{'menu.signout' | lang}}</a></li>
     </ng-container>
 </ul>

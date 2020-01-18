@@ -1,12 +1,17 @@
 <form [formGroup]="formSignup" (ngSubmit)="signup()" autocomplete="off">
     <div class="cnd-content">
+        <div class="cnd-head">
+            <div class="cnd-title">
+                {{'signup.title' | lang}}
+            </div>
+        </div>
         <div class="cnd-body">
             <div class="row">
                 <div class="col-md-12">
                     <div class="cnd-input">
                         <input type="text" id="firstName" name="firstName"
-                            placeholder="{{'person.firstName' | lang:lang}} *" formControlName="firstName" />
-                        <label class="label" for="firstName">{{'person.firstName' | lang:lang}} *</label>
+                            placeholder="{{'person.firstName' | lang}} *" formControlName="firstName" />
+                        <label class="label" for="firstName">{{'person.firstName' | lang}} *</label>
                         <div class="cnd-error">
                             <div *ngIf="hasError(formSignup.controls['firstName'],'required')">
                                 {{'person.errorFirstNameEmpty' | lang}}
@@ -20,8 +25,8 @@
                 <div class="col-md-12">
                     <div class="cnd-input">
                         <input type="text" id="lastName" name="lastName"
-                            placeholder="{{'person.lastName' | lang:lang}} *" formControlName="lastName" />
-                        <label class="label" for="lastName">{{'person.lastName' | lang:lang}} *</label>
+                            placeholder="{{'person.lastName' | lang}} *" formControlName="lastName" />
+                        <label class="label" for="lastName">{{'person.lastName' | lang}} *</label>
                         <div class="cnd-error">
                             <div *ngIf="hasError(formSignup.controls['lastName'],'required')">
                                 {{'person.errorLastNameEmpty' | lang}}
@@ -34,9 +39,9 @@
                 </div>
                 <div class="col-md-12">
                     <div class="cnd-input">
-                        <input type="email" id="email" name="email" placeholder="{{'person.email' | lang:lang}} *"
+                        <input type="email" id="email" name="email" placeholder="{{'person.email' | lang}} *"
                             formControlName="email" />
-                        <label class="label" for="email">{{'person.email' | lang:lang}} *</label>
+                        <label class="label" for="email">{{'person.email' | lang}} *</label>
                         <div class="cnd-error">
                             <div *ngIf="hasError(formSignup.controls['email'],'required')">
                                 {{'person.errorEmailEmpty' | lang}}
@@ -52,7 +57,7 @@
                 </div>
                 <div class="col-md-12">
                     <div class="cnd-group-button">
-                        <button type="submit" class="cnd-button">{{'signup.title' | lang:lang}}</button>
+                        <button type="submit" class="cnd-button">{{'signup.title' | lang}}</button>
                     </div>
                 </div>
             </div>

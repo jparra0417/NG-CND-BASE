@@ -17,6 +17,7 @@ import { P404Component } from './components/p404/p404.component';
 import { MessageComponent } from './components/message/message.component';
 import { SpinerComponent } from './components/spiner/spiner.component';
 import { PasswordComponent } from './components/password/password.component';
+import { ResetComponent } from './components/reset/reset.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { PasswordComponent } from './components/password/password.component';
     P404Component,
     MessageComponent,
     SpinerComponent,
-    PasswordComponent
+    PasswordComponent,
+    ResetComponent
   ],
   imports: [
     BrowserModule,

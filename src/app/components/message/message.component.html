@@ -1,8 +1,10 @@
 <ng-container *ngIf="show">
     <div class="cnd-message {{message ? message.type : ''}}">
-        <ng-container *ngFor="let m of message.message">
-            <div>{{ m.toString() | lang}}</div>
-        </ng-container>
-        <a class="cnd-button-message" (click)="close()">x</a>
+        <div class="cnd-message-body">
+            <ng-container *ngFor="let m of message.message">
+                <div>{{ m.toString() | lang}}</div>
+            </ng-container>
+            <a class="cnd-button-message" (click)="close()">x</a>
+        </div>
     </div>
 </ng-container>

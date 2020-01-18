@@ -12,7 +12,7 @@ export class SpinerComponent implements OnInit {
 
   ngOnInit() {
     this.spinerService.onSpiner().subscribe((result :boolean) => {
-      console.log("spiner", result)
+      // console.log("spiner", result)
       this.spiner = result;
     });
   }

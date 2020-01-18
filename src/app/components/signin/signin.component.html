@@ -1,12 +1,17 @@
-<form [formGroup]="formSignin" (ngSubmit)="signin()">
+<form [formGroup]="formSignin" (ngSubmit)="signin()" autocomplete="off">
     <div class="cnd-content">
+        <div class="cnd-head">
+            <div class="cnd-title">
+                {{'signin.title' | lang}}
+            </div>
+        </div>
         <div class="cnd-body">
             <div class="row">
                 <div class="col-md-12">
                     <div class="cnd-input">
-                        <input type="email" id="email" placeholder="{{'person.email' | lang:lang}} *" name="email"
+                        <input type="email" id="email" placeholder="{{'person.email' | lang}} *" name="email"
                             formControlName="email" />
-                        <label class="label" for="email">{{'person.email' | lang:lang}} *</label>
+                        <label class="label" for="email">{{'person.email' | lang}} *</label>
                         <div class="cnd-error">
                             <div *ngIf="hasError(formSignin.controls['email'],'required')">
                                 {{'person.errorEmailEmpty' | lang}}
@@ -22,9 +27,9 @@
                 </div>
                 <div class="col-md-12">
                     <div class="cnd-input">
-                        <input type="password" id="password" placeholder="{{'account.password' | lang:lang}} *"
+                        <input type="password" id="password" placeholder="{{'account.password' | lang}} *"
                             name="password" formControlName="password" />
-                        <label class="label" for="password">{{'account.password' | lang:lang}} *</label>
+                        <label class="label" for="password">{{'account.password' | lang}} *</label>
                         <div class="cnd-error">
                             <div *ngIf="hasError(formSignin.controls['password'],'required')">
                                 {{'account.errorPasswordEmpty' | lang}}
@@ -37,8 +42,9 @@
                 </div>
                 <div class="col-md-12">
                     <div class="cnd-group-button">
-                        <button type="button" class="cnd-link">{{'signin.forgottenPassword' | lang:lang}}</button>
-                        <button type="submit" class="cnd-button">{{'signin.title' | lang:lang}}</button>
+                        <button type="button" class="cnd-link"
+                            routerLink="/reset">{{'signin.forgottenPassword' | lang}}</button>
+                        <button type="submit" class="cnd-button">{{'signin.title' | lang}}</button>
                     </div>
                 </div>
             </div>

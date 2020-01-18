@@ -1,8 +1,9 @@
 body
     font-size: $font-size
-.cnd-background
-    background: $gray-medium
-    height: 100%
+    background: $gray-light
+
+.cnd-background    
+    height: 100vh
     padding: 0
     margin: 0
     display: -webkit-box
@@ -24,6 +25,18 @@ body
         padding-bottom: 15px
         border-radius: .5rem
         overflow: hidden
+// title
+.cnd-title
+    display: inline-block
+    font-size: 1.5rem
+    line-height: 1.5rem
+    font-weight: 500
+    border-bottom: 1.5px solid $gray-dark
+    padding-bottom: 2.5px
+
+.cnd-head
+    margin-bottom: 1rem
+
 // tabs
 .cnd-tab
     margin: 0.5rem 0 20px
@@ -32,6 +45,11 @@ body
     flex-wrap: wrap
     list-style: none
     border-bottom: 1px solid $gray-medium
+    &.cnd-menu
+        display: inline-flex
+        position: absolute
+        top: 0
+        right: 0
     li
         a
             color: $gray-medium

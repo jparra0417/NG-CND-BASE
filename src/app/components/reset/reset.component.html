@@ -1,0 +1,37 @@
+<form [formGroup]="formReset" (ngSubmit)="reset()" autocomplete="off">
+    <div class="cnd-content">
+        <div class="cnd-head">
+            <div class="cnd-title">
+                {{'reset.title' | lang}}
+            </div>
+        </div>
+        <div class="cnd-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="cnd-input">
+                        <input type="email" id="email" placeholder="{{'person.email' | lang}} *" name="email"
+                            formControlName="email" />
+                        <label class="label" for="email">{{'person.email' | lang}} *</label>
+                        <div class="cnd-error">
+                            <div *ngIf="hasError(formReset.controls['email'],'required')">
+                                {{'person.errorEmailEmpty' | lang}}
+                            </div>
+                            <div *ngIf="hasError(formReset.controls['email'],'email')">
+                                {{'person.errorEmailEmail' | lang}}
+                            </div>
+                            <div *ngIf="hasError(formReset.controls['email'],'maxlength')">
+                                {{'person.errorEmailLength' | lang}}
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+                <div class="col-md-12">
+                    <div class="cnd-group-button">
+                        <button type="button" class="cnd-link" routerLink="/">{{'signin.title' | lang}}</button>
+                        <button type="submit" class="cnd-button">{{'reset.title' | lang}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

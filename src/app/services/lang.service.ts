@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import i18n from '/workspace/cnd/env/i18n.json';
-import environment from '/workspace/cnd/env/json-cnd-base.json';
+import i18n from '/workspace/cnd/env/ENV-CND-BASE/i18n.json';
+import environment from '/workspace/cnd/env/ENV-CND-BASE/json-cnd-base.json';
+import { StringUtil } from '../utils/string-util';
 
 @Injectable({
   providedIn: 'root'
@@ -65,8 +66,8 @@ export class LangService {
    * It translates the key with the current lang
    * @param key 
    */
-  translate(key: string) {
-    return this.translateByLang(key, this.getLang());
+  translate(key: string, args?: any) {
+    return this.translateByLang(key, this.getLang(), args);
   }
 
   /**
@@ -74,7 +75,7 @@ export class LangService {
    * @param key String key of the text
    * @param lang 
    */
-  private translateByLang(key: string, lang: string): string {
+  private translateByLang(key: string, lang: string, args?: any): string {
     if (key && lang && i18n && i18n[lang]) {
       let translation = i18n[lang];
       const array = key.split(".");
@@ -86,7 +87,7 @@ export class LangService {
           return "";
         }
       }
-      if (typeof (translation) === 'string') return translation;
+      if (typeof (translation) === 'string') return StringUtil.replaceText(translation, args);
       console.log("The object of the key is not a string: ", key);
     } else {
       console.log("The [key] or [lang] are not supported ", key, lang);
@@ -94,3 +95,6 @@ export class LangService {
     return "";
   }
 }
+
+
+

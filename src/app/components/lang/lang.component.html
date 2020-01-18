@@ -1,4 +1,9 @@
 <div class="cnd-content">
+    <div class="cnd-head">
+        <div class="cnd-title">
+            {{'lang.title' | lang}}
+        </div>
+    </div>
     <div class="cnd-body">
         <div class="row">
             <div class="col-md-12">
@@ -8,7 +13,7 @@
                             <option [value]="language" [selected]="lang === language">{{'lang.'+language | lang}}</option>
                         </ng-container>
                     </select>
-                    <label class="label" for="email">{{'lang.selectLang' | lang:lang}}</label>
+                    <label class="label" for="email">{{'lang.selectLang' | lang}}</label>
                 </div>
             </div>                       
         </div>
