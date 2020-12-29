@@ -78,8 +78,13 @@ export abstract class BaseComponent {
     x = y;
   }
   /** concat string */
-  concat(x: string, y: string): string {
-    return x + y;
+  concat(...y: string[]): string {
+    let r = "";
+    if (y)
+      y.forEach(i => {
+        r += i;
+      });
+    return r;
   }
 
   /** is empty something */
