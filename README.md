@@ -1,2 +1,2 @@
 # NG-CND-BASE
-Angular sample
+Angular project that covers login, register, security modules
